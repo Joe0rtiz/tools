@@ -11,8 +11,9 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y stoken \
                        libstoken-dev \
-                       openconnect \
-                       squid3 && \
+                       openconnect && \
     apt-get autoclean
 
-EXPOSE 3128
+COPY assets/init /app/init
+RUN chmod 755 /app/init
+ENTRYPOINT ["/app/init"]
