@@ -12,7 +12,7 @@ RUN apt-get update && \
     apt-get install -y stoken \
                        libstoken-dev \
                        openconnect \
-                       squid && \
+                       squid3 && \
     apt-get autoclean
 
 EXPOSE 3128
