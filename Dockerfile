@@ -11,7 +11,8 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get -y install python-software-properties \
-                       software-properties-common && \
+                       software-properties-common \
+                       openconnect && \
     add-apt-repository ppa:cernekee/ppa && \
     apt-get update && \
     apt-get install stoken libstoken-dev
