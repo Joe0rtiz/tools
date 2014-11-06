@@ -17,3 +17,4 @@ RUN apt-get update && \
 COPY assets/init /app/init
 RUN chmod 755 /app/init
 ENTRYPOINT ["/app/init"]
+CMD ["app:start"]
