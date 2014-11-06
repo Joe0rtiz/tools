@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y stoken \
                        libstoken-dev \
-                       openconnect
+                       openconnect \
                        squid && \
     apt-get autoclean
 
