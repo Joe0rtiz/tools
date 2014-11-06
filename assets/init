@@ -32,4 +32,14 @@ cp ${RSA_KEYFILE} /root/
 
 fi
 
-openconnect -u $VPN_USERNAME -s /usr/share/vpnc-scripts/vpnc-script --token-mode=rsa --no-cert-check $VPN_GATEWAY
+appStart () {
+            openconnect -u $VPN_USERNAME -s /usr/share/vpnc-scripts/vpnc-script --token-mode=rsa --no-cert-check $VPN_GATEWAY
+            }
+
+case "$1" in
+  app:start)
+    appStart
+    ;;
+esac
+
+exit 0
