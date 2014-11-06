@@ -5,12 +5,7 @@ MAINTAINER Joe Ortiz version: 0.3
 
 # update container
 RUN apt-get update && \
-    apt-get install -y openconnect \
-                       stoken && \
-    apt-get autoclean
-
-RUN apt-get update && \
-    apt-get -y install python-software-properties \
+    apt-get install -y python-software-properties \
                        software-properties-common \
                        openconnect && \
     add-apt-repository ppa:cernekee/ppa && \
