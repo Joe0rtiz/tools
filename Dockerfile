@@ -10,4 +10,4 @@ RUN apt-get update && \
                        openconnect && \
     add-apt-repository ppa:cernekee/ppa && \
     apt-get update && \
-    apt-get install stoken libstoken-dev
+    apt-get install -y stoken libstoken-dev
