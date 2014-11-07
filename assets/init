@@ -11,18 +11,16 @@ DEFAULT_GATEWAY=$(ip route show default | awk '/default/ {print $3}')
 
 if [ "$NETWORKS" ]
 then
-
+function reconfigure_routes() {
 ip route del 0.0.0.0/0 via 0.0.0.0 dev $TUNNEL_INTERFACE
-
 # Add default route for non-vpn traffic
 ip route add 0/0 via $DEFAULT_GATEWAY dev $NODE_INTERFACE
-
 # Add static routes for data center networks via tunnel interface
 for network in ${NETWORKS[@]}
 do
     ip route add $network dev $TUNNEL_INTERFACE
 done
-
+}
 fi
 
 if [ "$RSA_KEYFILE" ]
@@ -34,7 +32,12 @@ fi
 
 appStart () {
             openconnect -u $VPN_USERNAME -s /usr/share/vpnc-scripts/vpnc-script --token-mode=rsa --no-cert-check $VPN_GATEWAY
-            }
+            failed=`echo $?`
+            if [ -n $failed ]
+            then
+                reconfigure_routes
+            fi
+                        }
 
 case "$1" in
   app:start)
