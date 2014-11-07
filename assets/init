@@ -7,7 +7,7 @@ RSA_KEYFILE=${RSA_KEYFILE}
 TUNNEL_INTERFACE=${TUNNEL_INTERFACE}
 NODE_INTERFACE=${NODE_INTERFACE}
 NETWORKS=${NETWORKS}
-DEFAULT_GATEWAY=$(ip route show default | awk '/default/ {print $3}')
+DEFAULT_GATEWAY=$(ip route show default | awk '/default/ {print $3}'|uniq)
 
 function reconfigure_routes() {
 if [ "$NETWORKS" ]
