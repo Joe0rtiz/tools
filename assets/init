@@ -25,12 +25,10 @@ fi
 
 if [ "$RSA_KEYFILE" ]
 then
-
 cp ${RSA_KEYFILE} /root/
-
 fi
 
-openconnect -u $VPN_USERNAME -s /usr/share/vpnc-scripts/vpnc-script --token-mode=rsa --no-cert-check $VPN_GATEWAY
+openconnect -b -u $VPN_USERNAME -s /usr/share/vpnc-scripts/vpnc-script --token-mode=rsa --no-cert-check $VPN_GATEWAY
 failed=`echo $?`
 if [ -n $failed ]
 then
