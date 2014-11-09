@@ -11,7 +11,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y stoken \
                        libstoken-dev \
-                       openconnect && \
+                       openconnect \
+                       ocproxy && \
     apt-get autoclean
 
 COPY assets/init /app/init
