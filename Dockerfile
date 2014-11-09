@@ -16,5 +16,6 @@ RUN apt-get update && \
     apt-get autoclean
 
 COPY assets/init /app/init
-#RUN chmod 755 /app/init
-#ENTRYPOINT ["/app/init"]
+EXPOSE 2280
+RUN chmod 755 /app/init
+ENTRYPOINT ["/app/init"]
