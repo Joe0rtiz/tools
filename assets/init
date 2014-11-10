@@ -17,5 +17,5 @@ fi
 
 if [ "${OPENVPN_CONFIG}" ]
   then
-  openvpn --config ${OPENVPN_CONFIG} --dev "|ocproxy -D 2280 -k 60 -g"
+  openvpn --config ${OPENVPN_CONFIG} --script-security 2 --dev "|ocproxy -D 2280 -k 60 -g"
 fi
