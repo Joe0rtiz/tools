@@ -14,3 +14,8 @@ if [ "${AUTHGROUP}" ]
   echo ${PASSWORD} | openconnect -u ${VPN_USERNAME} --script-tun --script "ocproxy -D 2280 -k 60 -g" --authgroup=${AUTHGROUP} --no-cert-check ${VPN_GATEWAY} --passwd-on-stdin
   exit 1
 fi
+
+if [ "${OPENVPN_CONFIG}" ]
+  then
+  openvpn --config ${OPENVPN_CONFIG} --dev "|ocproxy -D 2280 -k 60 -g"
+fi

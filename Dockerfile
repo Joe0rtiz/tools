@@ -12,7 +12,8 @@ RUN apt-get update && \
     apt-get install -y stoken \
                        libstoken-dev \
                        openconnect \
-                       ocproxy && \
+                       ocproxy \
+                       openvpn && \
     apt-get autoclean
 
 COPY assets/init /app/init
